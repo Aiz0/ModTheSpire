@@ -112,6 +112,7 @@ public class ModTheSpire
 
     public static void main(String[] args)
     {
+        System.setProperty("sun.java2d.d3d", "false");
         List<String> argList = Arrays.asList(args);
 
         // Restart MTS if jre1.8.0_51 is detected

@@ -48,6 +48,7 @@
 * Add setting to enable achievements
 * Add setting to unlock A20 for all characters
 * Read and display StS build distributor
+* Stop the Steam overlay running on the MTS window
 
 #### v3.30.3 ####
 * Fix package information being lost for patched classes (Alchyr)
