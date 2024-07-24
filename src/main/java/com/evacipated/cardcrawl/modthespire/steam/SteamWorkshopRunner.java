@@ -10,6 +10,7 @@ import java.io.OutputStreamWriter;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -54,6 +55,7 @@ public class SteamWorkshopRunner
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NoSuchElementException ignore) {
         }
         return workshopInfos;
     }
