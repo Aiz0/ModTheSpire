@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.*;
 import com.evacipated.cardcrawl.modthespire.patcher.InsertPatchInfo.LineNumberAndPatchType;
 import com.evacipated.cardcrawl.modthespire.patcher.javassist.MyCodeConverter;
+import javassist.Modifier;
 import javassist.*;
 import javassist.bytecode.AnnotationsAttribute;
 import javassist.bytecode.ConstPool;
@@ -17,10 +18,7 @@ import org.scannotation.AnnotationDB;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+import java.lang.reflect.*;
 import java.net.URL;
 import java.util.*;
 
@@ -528,6 +526,11 @@ public class Patcher {
                     }
                 } catch (NotFoundException e) {
                     if (patch.optional()) {
+                        continue;
+                    }
+                    throw new PatchingException(ctPatchClass.getName(), e);
+                } catch (UndeclaredThrowableException e) {
+                    if (e.getUndeclaredThrowable() instanceof ClassNotFoundException && patch.optional()) {
                         continue;
                     }
                     throw new PatchingException(ctPatchClass.getName(), e);
