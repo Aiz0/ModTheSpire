@@ -50,6 +50,7 @@
 * Read and display StS build distributor
 * Stop the Steam overlay running on the MTS window
 * Fix `optional` not working for `clz` in SpirePatch
+* Fix SpireConfig not closing file
 
 #### v3.30.3 ####
 * Fix package information being lost for patched classes (Alchyr)

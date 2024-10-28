@@ -1,6 +1,7 @@
 package com.evacipated.cardcrawl.modthespire.lib;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Properties;
 
 public class SpireConfig
@@ -49,12 +50,16 @@ public class SpireConfig
 
     public void load() throws IOException
     {
-        properties.load(new FileInputStream(file));
+        InputStream input = Files.newInputStream(file.toPath());
+        properties.load(input);
+        input.close();
     }
 
     public void save() throws IOException
     {
-        properties.store(new FileOutputStream(file), null);
+        OutputStream output = Files.newOutputStream(file.toPath());
+        properties.store(output, null);
+        output.close();
     }
 
     public boolean has(String key)
